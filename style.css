@@ -1,19 +1,41 @@
 
-h1, h2 {
-	margin-bottom:-20px;
-	font-size: 16pt;
-}
 
-a:link {
+
+.body a:link {
 	font-size: 13pt;
-    	text-decoration: none;
+    text-decoration: none;
 	color: red;
 }
 
-a:visited {
+.body a:visited {
 	color: red;
 }
 
-a:hover {
+.body a:hover {
 	color: black;
+}
+
+#main a:link {
+	font-size: 14pt;
+    text-decoration: none;
+	color: red;
+}
+
+#main a:visited {
+	color: red;
+}
+
+#main a:hover {
+	color: black;
+}
+
+h1 {
+	margin-bottom:-20px;
+	font-size: 18pt;
+}
+
+h2
+{
+	margin-bottom:-20px;
+	font-size: 14pt;
 }
