@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" />
+    
+<link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+    
+<title>CS 160</title>
+  
+<head></head>
+  
+<body class="index">
+    
+<div id="main">
+      
+<h1>CS 160 John Bradley </h1>
+      
+
+<h2><a  href="index.html">Home</a> >> <a  href="python.html">Python</a> >> <a href="rockpaper.html">Rock, Paper, Scissers</a></h2>
+<br>
+<br>
+<div>
+ <textarea rows="80" cols="90">
+import random
+
+end = 1
+
+while(end):
+    win = 0
+    comp = "Oops"
+    player = "Oops"
+    x = 0
+    num = random.randrange(1,4)
+    
+    if num == 1:
+        comp = "Rock"
+    if num == 2:
+        comp = "Paper"
+    if num == 3:
+        comp = "Scissors"
+
+    print("Rock, Paper, Scissors")
+    x = int(input("Enter: 1 for Rock, 2 for Paper, 3 for Scissor and 4 to quit game\n"))
+
+    if x in range(1,5):
+        if x == 4:
+            end = 0
+            player="NOTHING!"
+            win = 4
+        if x == 1:
+            player = "Rock"
+        if x == 2:
+            player = "Paper"
+        if x == 3:
+            player = "Scissors"
+
+        print("The computer plays: " + comp + "\nYou play: " + player)
+
+        if x == 1 and num == 3:
+            win = 1
+        if x == 1 and num == 1:
+            win = 2 #tie
+        if x == 2 and num == 1:
+            win = 1
+        if x == 2 and num == 2:
+            win = 2 #tie
+        if x == 3 and num == 2:
+            win = 1
+        if x == 3 and num == 3:
+            win = 2 #tie
+
+        lose = "Oh no! You lost"
+        victory = "You won!"
+        tie = "It's a tie"
+
+        if win == 0:
+            print(lose)
+        if win == 1:
+            print(victory)
+        if win == 2:
+            print(tie)
+
+        print("\n")
+print("Thanks for playing")
+        
+    
+
+</textarea> 
+</div>   
+</div>
+  
+</body>
+</html>
