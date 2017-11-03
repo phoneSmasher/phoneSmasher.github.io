@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" />
+    
+<link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+    
+<title>CS 160</title>
+  
+<head></head>
+  
+<body class="index">
+    
+<div id="main">
+      
+<h1>CS 160 John Bradley </h1>
+      
+
+<h2><a  href="index.html">Home</a> >> <a  href="python.html">Python</a> >> <a href="rockpaper.html">Mastermind</a></h2>
+<br>
+<br>
+<div>
+ <textarea rows="35" cols="90">
+import random
+
+
+def genSolution():
+    solution = ['A','A','A','A']
+    for i in range(0, 4):
+        num = random.randrange(1,5)
+        if num == 1:
+            solution[i] = 'R'
+        if num == 2:
+            solution[i] = 'G'
+        if num == 3:
+            solution[i] = 'B'
+        if num == 4:
+            solution[i] = 'W'
+    return solution
+
+def check(p, solution):
+    c = ''
+    track = ['A','A','A','A']
+    end = 0
+
+    for i in range (0, 4):
+        if solution[i] == p[i]:
+            c += str('C')
+            p = p[:i] + 'A' + p[(i+1):]
+            track[i] = 'C'
+
+    for i in range (0, 4):
+        end = 1
+        y = 0
+        if p[i] != 'A':
+            while (end and y < 4):
+                if solution[y] == p[i] and track[y] == 'A':
+                    c += str('B')
+                    track[y] = 'B'
+                    end = 0
+                y += 1                  
+    return c
+
+def printPicks(turns, previousPicks, checkList,):
+    print("\nPrevious:")
+    print("Picks   Matches")
+    for i in range(0, turns):
+        print(previousPicks[i] + "    " + checkList[i])
+    print("\n")
+
+def correctLetters(p):
+    correct = 1
+    if len(p) < 4 or len(p) > 4:
+        print("\nPlease pick exactly four characters")
+        correct = 0
+        
+    if correct != 0:
+        for i in range(0, 4):
+            if p[i] != 'R' and p[i] != 'G' and p[i] != 'B' and p[i] != 'W':
+                print('nope')
+                correct = 0
+        if correct == 0:
+                print("\nPlease only use letters R, G, B, W, and Q")    
+    return correct
+            
+def getPicks():
+    print("Pick colors for four slots.")
+    x = (input("Enter: R for Red, G for Green, B for blue, W for white and Q to quit game\n"))
+    x = x.upper()
+    return x
+
+
+
+def runGame():
+    turns = 1
+    picks = 'A'
+    solution = genSolution()
+    checkList = []
+    previousPicks = []
+
+    print("MasterMind Text")
+    
+    while picks != 'Q':
+
+        picks = getPicks()
+
+        if picks != 'Q':
+            correct = correctLetters(picks) 
+            
+            if correct:       
+                previousPicks.append(picks)
+
+                y = check(picks, solution)
+                checkList.append(y)
+
+                printPicks(turns, previousPicks, checkList)
+                turns += 1
+
+                picks = gameOver(turns, y, picks)
+
+    print("Goodbye thanks for playing")
+
+def gameOver(turns, y, picks):
+
+    if turns == 11 or y == 'CCCC':
+
+        if y == 'CCCC':
+            print("You Won!")
+        else:
+            print("You Lost")
+        x = input("Play again? y/n?")
+        x = x.upper()
+
+        if x == 'N':
+            picks = 'Q'
+    return picks
+
+runGame()
+
+
+</textarea> 
+</div>   
+</div>
+  
+</body>
+</html>
