@@ -78,7 +78,6 @@ def correctLetters(p):
     if correct != 0:
         for i in range(0, 4):
             if p[i] != 'R' and p[i] != 'G' and p[i] != 'B' and p[i] != 'W':
-                print('nope')
                 correct = 0
         if correct == 0:
                 print("\nPlease only use letters R, G, B, W, and Q")    
@@ -118,6 +117,11 @@ def runGame():
                 turns += 1
 
                 picks = gameOver(turns, y, picks)
+                if picks == 'Z':
+                    solution = genSolution()
+                    checkList = []
+                    previousPicks = []
+                    turns = 1
 
     print("Goodbye thanks for playing")
 
@@ -134,7 +138,11 @@ def gameOver(turns, y, picks):
 
         if x == 'N':
             picks = 'Q'
+        else:
+            picks = 'Z'
     return picks
+
+
 
 runGame()
 
