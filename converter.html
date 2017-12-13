@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" />
+    
+<link href="style.css" media="screen" rel="stylesheet" type="text/css" />
+    
+<title>CS 160</title>
+  
+<head></head>
+  
+<body class="index">
+    
+<div id="main">
+      
+<h1>CS 160 John Bradley </h1>
+      
+
+<h2><a  href="index.html">Home</a> >> <a  href="python.html">Python</a> >> <a href="rockpaper.html">Decimal to Base Converter</a></h2>
+<br>
+<br>
+<div>
+<a target="_blank" href="https://www.screencast.com/t/DlHeTHVKrl6">Jing Video of the converter</a>
+<br>
+<br>
+ <textarea rows="35" cols="110">
+
+def power(x, base):
+    b = base
+    up = 1
+    while(x > base):
+        up += 1
+        base = b ** up
+    if base != x:
+        base = int(base / b)
+    return base
+
+def binary(x, two, y):
+    while (two > 0):
+        if two == x:
+            y = y + '1'
+            x = 0
+        elif two < x and x != 0:
+            x = x - two 
+            y = y + '1'
+        elif (two > x):
+            y = y + '0'
+            
+        two = int(two/2)
+        
+        if (two == 1):
+            two = 0
+            if x == 1:
+                y = y + '1'
+            else:
+                y = y + '0'
+    return y
+
+def get16(x):
+    y = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    return y[x]
+
+def h(x, num, y):
+    while(num > 0):
+        if num == x:
+            y = y + get16(1)
+            x = 0
+        elif num < x:
+            y = y + get16(int(x/num))
+            x = int(x%num)
+
+        num = int(num / 16)
+
+        if num > x:
+            y = y + get16(0)
+            if x == 0:
+                num = 0
+
+    return y
+            
+def check(x, base):
+    bob = False
+    if x.isalpha() or base.isalpha() or x == '' or x == ' ':
+        print("Please enter a number.")
+    elif int(x) < 1:
+        print("Enter a number larger than 0.")
+    elif int(base) != 2 and int(base) != 16:
+        print("Enter a base of 2 or 16")
+    else:
+        bob = True
+    print('')
+    return bob
+
+def prent(num, x, base):   
+    print("Decimal number: " + str(x))
+    print("Base: " + base)
+    print("Converted number: " + str(num) + "\n")
+    
+def main():
+    x = ''
+    y = ''
+    base = ''
+    while (x != 'q'):
+        x = input("Enter the number to convert: ")
+        base = input("Enter the base or q to quit: ")
+        if check(x, base):
+            x = int(x)
+            if base == '2':
+                prent(binary(x, power(x, int(base)), y), x, base)
+            
+            if base == '16':
+                prent(h(x, power(x, int(base)), y),x, base)
+
+main()
+
+</textarea> 
+</div>   
+</div>
+  
+</body>
+</html>
